@@ -17,32 +17,40 @@ Step 5: Terminate the program.
 
 ## PROGRAM: 
 ```
-clc;%clear screen
+clc;
 clear all;
 close all;
 a=input('enter the starting x(n)');
-x=input('enter the x(n) sequence');
+x=input('Enter the x(n) sequence');
 n=a:1:length(x)+a-1;
-figure(1);
-stem(n,x);
-xlabel('time');
-ylabel('amplitude');
-title('input sequence');
-b=input('enter the starting h(n)');
-y=input('enter the h(n) sequence');
-m=b:1:length(y)+b-1;
-figure(2);
-stem(m,y);
-xlabel('time');
-ylabel('amplitude');
-title('impulse response');
-z=conv2(x,y);
-n1=a+b:1:length(z)+a+b-1;
-figure(3);
-stem(n1,z);
-xlabel('time');
-ylabel('amplitude');
-title('linear convolution');
+figure(1)
+stem(n,x)
+xlabel('Time')
+ylabel('Amplitude')
+title('Input Signal-1')
+b=input('enter the starting y(n)');
+y=input('Enter the y(n) sequence');
+m=input('enter the ending y(n)');
+n1=b:1:length(y)+b-1;
+figure(2)
+stem(n1,y)
+xlabel('Time')
+ylabel('Amplitude')
+title('Input signal-2')
+out1=xcorr(x,x)
+n2=a-m:1:length(out1)+a-m-1;
+figure(3)
+stem(n2,out1)
+xlabel('Time')
+ylabel('Amplitude')
+title('Discrete auto correlated waveform')
+out2=xcorr(x,y);
+n3=a-m:1:length(out2)+a-m-1;
+figure(4)
+stem(n3,out2)
+xlabel('Time')
+ylabel('Amplitude')
+title('Discrete cross correlated waveform')
 ```
 
 ## OUTPUT:
